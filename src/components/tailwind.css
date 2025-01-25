@@ -1,0 +1,13 @@
+@import "tailwindcss";
+.form-div
+{
+display: flex;
+flex-direction: row;
+
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
