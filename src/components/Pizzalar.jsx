@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 export default function Pizzalar() {
 
     const [pizzaName, setPizzaName] = useState("");
-    const [pizzaPrice, setPizzaPrice] = useState("");
+    const [pizzaPrice, setPizzaPrice] = useState(0);
     const [pizzaStars, setPizzaStarts] = useState("");
     const[pizzaDescription,setPizzaDescription]=useState("");
     const history = useHistory();
@@ -41,7 +41,7 @@ export default function Pizzalar() {
                     <span className="text-gray-400">☆</span>
                 </div>
                 <p className="text-lg font-bold mt-2">$10</p>
-                <button onClick={() => { handleClickOrderButton("Margherita Pizza", "10$", "4/5","Margherita Pizza is known as the simplest and most classic version of pizza. This delicious creation from Italian cuisine leaves an unforgettable impression on the palate with the perfect harmony of tomato sauce, fresh mozzarella cheese, and basil leaves. Featuring simplicity, Margherita Pizza is a must-try for those who appreciate the purest form of natural flavors.") }} className="mt-4  w-full py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-colors">Add to Cart</button>
+                <button onClick={() => { handleClickOrderButton("Margherita Pizza",10, "4/5","Margherita Pizza is known as the simplest and most classic version of pizza. This delicious creation from Italian cuisine leaves an unforgettable impression on the palate with the perfect harmony of tomato sauce, fresh mozzarella cheese, and basil leaves. Featuring simplicity, Margherita Pizza is a must-try for those who appreciate the purest form of natural flavors.") }} className="mt-4  w-full py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-colors">Add to Cart</button>
             </div>
 
 
@@ -56,7 +56,7 @@ export default function Pizzalar() {
                     <span className="text-yellow-500">★</span>
                 </div>
                 <p className="text-lg font-bold mt-2">$12</p>
-                <button onClick={() => { handleClickOrderButton("Pepperoni Pizza", "12$", "5/5","Pepperoni Pizza is a favorite for meat lovers! Thin and crispy pepperoni slices, rich tomato sauce, and melting mozzarella cheese combine to stir up anyone's appetite. With its spicy and satisfying taste, Pepperoni Pizza offers energy and joy in every bite.") }} className="mt-4 w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">Add to Cart</button>
+                <button onClick={() => { handleClickOrderButton("Pepperoni Pizza",12, "5/5","Pepperoni Pizza is a favorite for meat lovers! Thin and crispy pepperoni slices, rich tomato sauce, and melting mozzarella cheese combine to stir up anyone's appetite. With its spicy and satisfying taste, Pepperoni Pizza offers energy and joy in every bite.") }} className="mt-4 w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">Add to Cart</button>
             </div>
 
 
@@ -71,7 +71,7 @@ export default function Pizzalar() {
                     <span className=  "text-gray-400">☆</span>
                 </div>
                 <p className="text-lg font-bold mt-2">$11</p>
-                <button onClick={() => { handleClickOrderButton("Vegetarian Pizza", "11$", "4/5","Vegetarian Pizza offers a light option made with the freshest and most flavorful vegetables. This pizza is enhanced with ingredients like bell peppers, mushrooms, olives, tomatoes, and onions, blending perfectly with tomato sauce and mozzarella cheese to create a healthful and delicious feast. Vegetarian Pizza holds a special place in the hearts of vegetable lovers.") }} className="mt-4 w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">Add to Cart</button>
+                <button onClick={() => { handleClickOrderButton("Vegetarian Pizza",11, "4/5","Vegetarian Pizza offers a light option made with the freshest and most flavorful vegetables. This pizza is enhanced with ingredients like bell peppers, mushrooms, olives, tomatoes, and onions, blending perfectly with tomato sauce and mozzarella cheese to create a healthful and delicious feast. Vegetarian Pizza holds a special place in the hearts of vegetable lovers.") }} className="mt-4 w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">Add to Cart</button>
             </div>
 
 
@@ -86,7 +86,7 @@ export default function Pizzalar() {
                     <span className="text-yellow-500">★</span>
                 </div>
                 <p className="text-lg font-bold mt-2">$13</p>
-                <button onClick={() => { handleClickOrderButton("BBQ Chicken Pizza", "13$", "5/5","BBQ Chicken Pizza brings together the sweet and smoky flavor of barbecue sauce with tender chicken. Grilled chicken pieces, red onions, mozzarella, and tasty barbecue sauce combine to delight the taste buds. With a subtle touch of spices, BBQ Chicken Pizza is an ideal choice for those seeking a unique and different taste experience.") }} className="mt-4 w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">Add to Cart</button>
+                <button onClick={() => { handleClickOrderButton("BBQ Chicken Pizza",13, "5/5","BBQ Chicken Pizza brings together the sweet and smoky flavor of barbecue sauce with tender chicken. Grilled chicken pieces, red onions, mozzarella, and tasty barbecue sauce combine to delight the taste buds. With a subtle touch of spices, BBQ Chicken Pizza is an ideal choice for those seeking a unique and different taste experience.") }} className="mt-4 w-full py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors">Add to Cart</button>
             </div>
         </div>
 
