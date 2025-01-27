@@ -3,13 +3,14 @@ import './tailwind.css'
 import React, { useEffect, useState } from 'react';
 
 export default function Pizzalar() {
-
+   
     const [pizzaName, setPizzaName] = useState("");
     const [pizzaPrice, setPizzaPrice] = useState(0);
     const [pizzaStars, setPizzaStarts] = useState("");
     const[pizzaDescription,setPizzaDescription]=useState("");
     const[pizzaPictureSrc,setPizzaPictureSrc]=useState("");
     const history = useHistory();
+    
 
    
     const handleClickOrderButton = (pizzaName, pizzaPrice, pizzaStars,pizzaDescription,pizzaPictureSrc) => {

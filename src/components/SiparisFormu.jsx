@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function SiparisFormu() {
+  
   const location = useLocation();
   const { pizzaName, pizzaPrice, pizzaStars, pizzaDescription,pizzaPictureSrc } =location.state || {};
   const [finalPrice, setFinalPrice] = useState(pizzaPrice);
@@ -15,6 +16,9 @@ export default function SiparisFormu() {
   const [extraCounter, setExtraCounter] = useState(0);
   const [pizzaCounter, setPizzaCounter] = useState(1);
   const [customerName, setCustomerName] = useState("");
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+}, []);
 
   useEffect(() => {
     setIsFormAvailable(pizzaSize && pizzaDough && customerName.length >= 3);

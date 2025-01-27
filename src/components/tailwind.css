@@ -168,3 +168,119 @@ body
   width: 130px;
   
 }
+.flex-items-div-1
+{
+  background-image: url('images/iteration-2-images/cta/kart-1.png');
+  background-size: cover; 
+  background-position: center; 
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: white;
+  border-radius: 15px;
+  
+  
+}
+.flex-item-boxed
+{
+  background-image: url('images/iteration-2-images/cta/kart-2.png');
+  background-size: cover; 
+  background-position: center; 
+  width: 600px;
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: white;
+  align-items: baseline;
+  border-radius: 15px;
+  
+  
+}
+
+.flex-item-boxed-2
+{
+  background-image: url('images/iteration-2-images/cta/kart-3.png');
+  background-size: cover; 
+  background-position: center; 
+  width: 600px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: white;
+  align-items: baseline;
+  border-radius: 15px;
+  
+}
+.flexed-div
+{
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.flexed-div-button
+{
+  color: #CE2829;
+}
+.content
+{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: start;
+  margin: 40px;
+}
+.red-danger
+{
+  color: #CE2829;
+}
+.menu-midle-bordered
+{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 25px;
+  
+}
+
+.icon-div-2
+{
+  display: flex;
+  background-color: #c9c2c2;
+  border-radius: 15px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.font-script {
+    font-family: 'Satisfy', cursive;
+    font-style: italic;
+}
+
+.red-text {
+    color: red;
+}
+
+.black-text {
+    color: black;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+   
+}
+.title-white
+{
+  color: #fff;
+}
+
