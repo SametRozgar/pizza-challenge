@@ -1,12 +1,14 @@
-import { useLocation } from "react-router-dom";
 import "./tailwind.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function SiparisFormu() {
-  
-  const location = useLocation();
-  const { pizzaName, pizzaPrice, pizzaStars, pizzaDescription,pizzaPictureSrc } =location.state || {};
+export default function SiparisFormu({
+  pizzaName,
+  pizzaPrice,
+  pizzaStars,
+  pizzaDescription,
+  pizzaPictureSrc,
+}) {
   const [finalPrice, setFinalPrice] = useState(pizzaPrice);
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [isFormAvailable, setIsFormAvailable] = useState(false);
@@ -16,9 +18,10 @@ export default function SiparisFormu() {
   const [extraCounter, setExtraCounter] = useState(0);
   const [pizzaCounter, setPizzaCounter] = useState(1);
   const [customerName, setCustomerName] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0); 
-}, []);
+  }, []);
 
   useEffect(() => {
     setIsFormAvailable(pizzaSize && pizzaDough && customerName.length >= 3);
@@ -29,25 +32,25 @@ export default function SiparisFormu() {
     setExtraCounter((prevPrice) => prevPrice + 5);
     setSelectedExtras([...selectedExtras, extra]);
   };
-  
+
   const removeFromExtras = (extra) => {
     setSelectedExtras(selectedExtras.filter((item) => item !== extra));
     setFinalPrice((prevPrice) => prevPrice - 5);
     setExtraCounter((prevPrice) => prevPrice - 5);
   };
-  
+
   const handleToppingSelection = (e) => {
-    const topping = e.target.value
+    const topping = e.target.value;
     if (selectedExtras.includes(topping)) {
-      removeFromExtras(topping)
+      removeFromExtras(topping);
     } else {
       if (selectedExtras.length >= 10) {
         alert("You can only select up to 10 extras!");
         return;
       }
-      addToExtras(topping)
+      addToExtras(topping);
     }
-  }
+  };
 
   const addSize = (e) => {
     const size = e.target.value;
@@ -63,13 +66,14 @@ export default function SiparisFormu() {
   };
 
   const pizzaUpper = () => {
-    setPizzaCounter((prevcount) => prevcount + 1);
-    setFinalPrice((prevcount) => prevcount + pizzaPrice);
+    setPizzaCounter((prevCount) => prevCount + 1);
+    setFinalPrice((prevPrice) => prevPrice + pizzaPrice);
   };
+
   const pizzaDowner = () => {
     if (pizzaCounter > 1) {
-      setPizzaCounter((prevcount) => prevcount - 1);
-      setFinalPrice((prevcount) => prevcount - pizzaPrice);
+      setPizzaCounter((prevCount) => prevCount - 1);
+      setFinalPrice((prevPrice) => prevPrice - pizzaPrice);
     }
   };
 
@@ -132,8 +136,9 @@ export default function SiparisFormu() {
             {[...Array(5)].map((_, index) => (
               <span
                 key={index}
-                className={`text-$
-                  {index < pizzaStars ? "yellow" : "gray"}-500`}
+                className={`text-${
+                  index < pizzaStars ? "yellow" : "gray"
+                }-500`}
               >
                 ★
               </span>
@@ -148,20 +153,16 @@ export default function SiparisFormu() {
               Please Select Size <span className="text-red-500 text-xl">*</span>
             </h4>
             <div className="space-y-2">
-              {[
-                { label: "Small", value: "Small" },
-                { label: "Medium", value: "Medium" },
-                { label: "Large", value: "Large" },
-              ].map((size) => (
-                <label key={size.value} className="flex items-center">
+              {["Small", "Medium", "Large"].map((size) => (
+                <label key={size} className="flex items-center">
                   <input
                     type="radio"
                     name="size"
                     className="mr-2"
-                    value={size.value}
+                    value={size}
                     onChange={addSize}
                   />
-                  {size.label}
+                  {size}
                 </label>
               ))}
             </div>
@@ -184,9 +185,8 @@ export default function SiparisFormu() {
         </div>
         <h3 className="text-lg font-bold mb-2 extras-heading">Select Up to 10 Toppings</h3>
         <div className=" extras">
-
           {toppings.map((topping) => (
-            <label key={topping} className="">
+            <label key={topping}>
               <input
                 type="checkbox"
                 value={topping}
@@ -196,14 +196,11 @@ export default function SiparisFormu() {
                   selectedExtras.length >= 10 &&
                   !selectedExtras.includes(topping)
                 }
-                className=""
               />
               {topping}
             </label>
           ))}
         </div>
-
-       
 
         <div className="mb-4">
           <h3 className="text-lg font-bold mt-10 mb-5">Order Note</h3>
@@ -215,7 +212,7 @@ export default function SiparisFormu() {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="customerName" className="text-lg font-bold ">
+          <label htmlFor="customerName" className="text-lg font-bold">
             Enter Your Name <span className="text-red-500 text-xl">*</span>
           </label>
           <input

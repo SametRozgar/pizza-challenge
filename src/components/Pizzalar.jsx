@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './tailwind.css'
 import React, { useEffect, useState } from 'react';
 
-export default function Pizzalar() {
+export default function Pizzalar(props) {
    
     const [pizzaName, setPizzaName] = useState("");
     const [pizzaPrice, setPizzaPrice] = useState(0);
@@ -11,7 +11,7 @@ export default function Pizzalar() {
     const[pizzaPictureSrc,setPizzaPictureSrc]=useState("");
     const history = useHistory();
     
-
+   const {pizzaRenderFunction}=props;
    
     const handleClickOrderButton = (pizzaName, pizzaPrice, pizzaStars,pizzaDescription,pizzaPictureSrc) => {
         setPizzaName(pizzaName);
@@ -19,16 +19,15 @@ export default function Pizzalar() {
         setPizzaStarts(pizzaStars);
         setPizzaDescription(pizzaDescription);
         setPizzaPictureSrc(pizzaPictureSrc);
+           
+
+        pizzaRenderFunction(pizzaName,pizzaPrice,pizzaStars,pizzaDescription,pizzaPictureSrc)
+       
+        
         history.push({
             pathname: "/siparisformu",
-            state: {
-              pizzaName,
-              pizzaPrice,
-              pizzaStars,
-              pizzaDescription,
-              pizzaPictureSrc
-            },
           });
+
     }
 
     return (
