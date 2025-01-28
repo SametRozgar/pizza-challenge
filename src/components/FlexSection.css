@@ -1,0 +1,163 @@
+/* Ana Konteyner */
+.menu-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+/* Ana Menü Kutusu */
+.menu-main {
+    background-image: url('images/iteration-2-images/cta/kart-1.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    min-height: 415px;
+}
+
+.menu-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.menu-main-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-main-text {
+    font-size: 18px;
+}
+
+.menu-main-btn {
+    background-color: white;
+    color: #CE2829;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Menü Kutuları Konteyner */
+.menu-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Menü Kutuları */
+.menu-box {
+    flex: 1;
+    color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    min-height: 200px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Burger Kutusu */
+.menu-box-burger {
+    background-image: url('images/iteration-2-images/cta/kart-2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Hızlı Teslimat Kutusu */
+.menu-box-delivery {
+    background-image: url('images/iteration-2-images/cta/kart-3.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.menu-box-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menu-box-text {
+    font-size: 16px;
+}
+
+.menu-box-btn {
+    background-color: white;
+    color: #CE2829;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.menu-highlight {
+    color: red;
+}
+
+/* RESPONSIVE TASARIM */
+@media (max-width: 766px) {
+    .menu-box-container {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+    .menu-2804
+   {
+    width: 300px;
+   }
+}
+@media (max-width: 1000px) {
+    .menu-container
+    {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+   .menu-2804
+   {
+    width: 800px;
+   }
+    .menu-box-container {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
+
+    .menu-box {
+        max-width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .menu-main {
+        min-height: 200px;
+    }
+
+    .menu-box {
+        padding: 20px;
+    }
+
+    .menu-main-btn,
+    .menu-box-btn {
+        padding: 8px 15px;
+    }
+}

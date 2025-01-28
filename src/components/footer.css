@@ -1,0 +1,110 @@
+.footer {
+    background-color: #1a202c;
+    color: white;
+    padding: 40px 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ce2829;
+    margin-bottom: 20px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #a0aec0;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-item:hover .icon {
+    color: #ce2829;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .menu ul li:hover {
+    color: #ce2829;
+  }
+  
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .instagram-grid img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .instagram-grid img:hover {
+    transform: scale(1.1);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    color: #a0aec0;
+    margin-top: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+      text-align: left;
+    }
+  
+    .instagram-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .grid {
+      text-align: center;
+    }
+  
+    .instagram-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .contact-item {
+      flex-direction: column;
+    }
+  }
+  

@@ -1,4 +1,4 @@
-import "./tailwind.css";
+import "./SiparisFormu.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -124,41 +124,37 @@ export default function SiparisFormu({
   ];
 
   return (
+    <div className="form-container">
     <div className="form-div">
-      <form
-        className="w-[600px] p-6 rounded-lg shadow-lg"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="text-2xl font-bold mb-4">Order: {pizzaName}</h1>
-        <div className="flex justify-between mb-4">
-          <p className="text-lg">{pizzaPrice}$</p>
-          <div className="flex items-center">
+      <form className="form" onSubmit={handleSubmit}>
+        <h1 className="form-title">Order: {pizzaName}</h1>
+        <div className="form-header">
+          <p className="pizza-price">{pizzaPrice}$</p>
+          <div className="stars-container">
             {[...Array(5)].map((_, index) => (
               <span
                 key={index}
-                className={`text-${
-                  index < pizzaStars ? "yellow" : "gray"
-                }-500`}
+                className={`star ${index < pizzaStars ? "star-filled" : ""}`}
               >
                 ★
               </span>
             ))}
           </div>
         </div>
-        <p className="mb-6">{pizzaDescription}</p>
+        <p className="pizza-description">{pizzaDescription}</p>
 
-        <div className="flex space-x-8 mb-6">
-          <div className="w-full">
-            <h4 className="text-xl font-bold pl-4 mb-2">
-              Please Select Size <span className="text-red-500 text-xl">*</span>
+        <div className="form-section">
+          <div className="form-group">
+            <h4 className="form-label">
+              Please Select Size <span className="required">*</span>
             </h4>
-            <div className="space-y-2">
+            <div className="radio-group">
               {["Small", "Medium", "Large"].map((size) => (
-                <label key={size} className="flex items-center">
+                <label key={size} className="radio-label">
                   <input
                     type="radio"
                     name="size"
-                    className="mr-2"
+                    className="radio-input"
                     value={size}
                     onChange={addSize}
                   />
@@ -168,25 +164,22 @@ export default function SiparisFormu({
             </div>
           </div>
 
-          <div className="w-full">
-            <h4 className="text-xl font-bold pl-4 mb-2">
-              Please Select Dough{" "}
-              <span className="text-red-500 text-xl">*</span>
+          <div className="form-group">
+            <h4 className="form-label">
+              Please Select Dough <span className="required">*</span>
             </h4>
-            <select
-              className="block w-full bg-white border border-gray-200 py-3 px-4 rounded select"
-              onChange={addDough}
-            >
+            <select className="select" onChange={addDough}>
               <option value="thin">Thin</option>
               <option value="extra thick">Extra Thick</option>
               <option value="thick">Thick</option>
             </select>
           </div>
         </div>
-        <h3 className="text-lg font-bold mb-2 extras-heading">Select Up to 10 Toppings</h3>
-        <div className=" extras">
+
+        <h3 className="extras-heading">Select Up to 10 Toppings</h3>
+        <div className="extras">
           {toppings.map((topping) => (
-            <label key={topping}>
+            <label key={topping} className="checkbox-label">
               <input
                 type="checkbox"
                 value={topping}
@@ -202,74 +195,76 @@ export default function SiparisFormu({
           ))}
         </div>
 
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mt-10 mb-5">Order Note</h3>
+        <div className="form-group">
+          <h3 className="form-label">Order Note</h3>
           <textarea
             onChange={addNote}
             placeholder="Do you have any message about your order?"
-            className="w-full border rounded p-2"
+            className="textarea"
           ></textarea>
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="customerName" className="text-lg font-bold">
-            Enter Your Name <span className="text-red-500 text-xl">*</span>
+        <div className="form-group">
+          <label htmlFor="customerName" className="form-label">
+            Enter Your Name <span className="required">*</span>
           </label>
           <input
             type="text"
             id="customerName"
             onChange={handleNameChange}
-            className="w-full border rounded p-2"
+            className="input"
             placeholder="Your Name"
           />
         </div>
-        <div className="orderdetails">
-          <div className="flex items-center space-x-4 mb-6 upper-div">
+
+        <div className="order-details">
+          <div className="counter-container">
             <button
               type="button"
-              className="upper-downer-btn"
+              className="counter-btn"
               onClick={pizzaUpper}
             >
               +
             </button>
-            <span>{pizzaCounter}</span>
+            <span className="counter-value">{pizzaCounter}</span>
             <button
               type="button"
-              className="upper-downer-btn"
+              className="counter-btn"
               onClick={pizzaDowner}
             >
               -
             </button>
           </div>
-          <div className="mb-4 order-price-list">
-            <p className="order-title">Order Total</p>
-            <div className="prices">
-              <div className="extras-div">
-                <p>Extras: </p>
-                <span> {extraCounter}$</span>
+          <div className="price-container">
+            <p className="price-title">Order Total</p>
+            <div className="price-details">
+              <div className="price-row">
+                <p>Extras:</p>
+                <span>{extraCounter}$</span>
               </div>
-
-              <div className="total-div">
-                <p>Total Price: </p>
+              <div className="price-row">
+                <p>Total Price:</p>
                 <span>{finalPrice}$</span>
               </div>
             </div>
-
-            <div className="mt-6 text-center">
-              <button
-                type="submit"
-                disabled={!isFormAvailable}
-                className="btn order-btn"
-              >
-                Proceed to Order
-              </button>
-            </div>
           </div>
         </div>
+
+        <div className="form-footer">
+          <button
+            type="submit"
+            disabled={!isFormAvailable}
+            className="submit-btn"
+          >
+            Proceed to Order
+          </button>
+        </div>
       </form>
-      <div className="spinner-image">
-        <img src={pizzaPictureSrc} alt="" />
-      </div>
+      
     </div>
+    <div className="spinner-image">
+        <img src={pizzaPictureSrc} alt="Pizza" />
+      </div>
+  </div>
   );
 }
