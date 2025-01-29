@@ -1,6 +1,7 @@
 import "./SiparisFormu.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function SiparisFormu({
   pizzaName,
@@ -8,6 +9,7 @@ export default function SiparisFormu({
   pizzaStars,
   pizzaDescription,
   pizzaPictureSrc,
+  orderRender,
 }) {
   const [finalPrice, setFinalPrice] = useState(pizzaPrice);
   const [selectedExtras, setSelectedExtras] = useState([]);
@@ -18,6 +20,7 @@ export default function SiparisFormu({
   const [extraCounter, setExtraCounter] = useState(0);
   const [pizzaCounter, setPizzaCounter] = useState(1);
   const [customerName, setCustomerName] = useState("");
+  const history=useHistory()
 
   useEffect(() => {
     window.scrollTo(0, 0); 
@@ -28,15 +31,17 @@ export default function SiparisFormu({
   }, [pizzaSize, pizzaDough, customerName]);
 
   const addToExtras = (extra) => {
-    setFinalPrice((prevPrice) => prevPrice + 5);
-    setExtraCounter((prevPrice) => prevPrice + 5);
+    const extraCost = 5; 
     setSelectedExtras([...selectedExtras, extra]);
+    setExtraCounter((prev) => prev + extraCost);
+    setFinalPrice((prevPrice) => prevPrice + extraCost * pizzaCounter); 
   };
-
+  
   const removeFromExtras = (extra) => {
+    const extraCost = 5;
     setSelectedExtras(selectedExtras.filter((item) => item !== extra));
-    setFinalPrice((prevPrice) => prevPrice - 5);
-    setExtraCounter((prevPrice) => prevPrice - 5);
+    setExtraCounter((prev) => prev - extraCost);
+    setFinalPrice((prevPrice) => prevPrice - extraCost * pizzaCounter); 
   };
 
   const handleToppingSelection = (e) => {
@@ -45,7 +50,7 @@ export default function SiparisFormu({
       removeFromExtras(topping);
     } else {
       if (selectedExtras.length >= 10) {
-        alert("You can only select up to 10 extras!");
+       
         return;
       }
       addToExtras(topping);
@@ -67,16 +72,16 @@ export default function SiparisFormu({
 
   const pizzaUpper = () => {
     setPizzaCounter((prevCount) => prevCount + 1);
-    setFinalPrice((prevPrice) => prevPrice + pizzaPrice);
+    setFinalPrice((prevPrice) => prevPrice + pizzaPrice + extraCounter);
+    setExtraCounter((prevcount)=>prevcount*pizzaCounter)
   };
-
+  
   const pizzaDowner = () => {
     if (pizzaCounter > 1) {
       setPizzaCounter((prevCount) => prevCount - 1);
-      setFinalPrice((prevPrice) => prevPrice - pizzaPrice);
+      setFinalPrice((prevPrice) => prevPrice - (pizzaPrice + extraCounter));
     }
   };
-
   const handleNameChange = (e) => {
     setCustomerName(e.target.value);
   };
@@ -104,6 +109,8 @@ export default function SiparisFormu({
     } catch (error) {
       console.error("Error submitting order:", error);
     }
+    orderRender(orderData);
+    history.push("/confirmtheorder")
   };
 
   const toppings = [
